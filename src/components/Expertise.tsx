@@ -2,55 +2,56 @@ import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
+import { faShieldAlt, faNetworkWired, faCode } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 
 const labelsFirst = [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
+    "Network Security",
+    "Cybersecurity Fundamentals",
+    "Linux",
     "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
+    "Wireshark",
+    "Nmap",
+    "OWASP Top 10",
+    "Security Best Practices",
+    "Risk Assessment",
+    "Incident Response",
+    "Ethical Hacking"
 ];
 
 const labelsSecond = [
-    "Git",
-    "GitHub Actions",
-    "Docker",
-    "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
+    "Network Administration",
+    "System Security",
+    "Firewall Configuration",
+    "VPN Setup",
+    "IDS/IPS",
+    "Security Policies",
+    "Access Control",
+    "Log Analysis",
+    "Security Monitoring",
 ];
 
 const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+    "Python Scripting",
+    "Bash Scripting",
+    "Security Automation",
+    "Vulnerability Scanning",
+    "Security Tools",
+    "Malware Analysis",
+    "Forensics Basics",
 ];
 
 function Expertise() {
     return (
     <div className="container" id="expertise">
         <div className="skills-container">
-            <h1>Expertise</h1>
+            <h1>skills</h1>
             <div className="skills-grid">
                 <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
+                    <FontAwesomeIcon icon={faShieldAlt} size="3x"/>
+                    <h3>Cybersecurity</h3>
+                    <p>As a fresh graduate passionate about cybersecurity, I have a strong foundation in network security, ethical hacking principles, and security best practices. I am eager to apply my knowledge in identifying vulnerabilities, implementing security measures, and contributing to protecting organizational assets while continuously learning and growing in the field.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsFirst.map((label, index) => (
@@ -60,9 +61,9 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
-                    <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
+                    <FontAwesomeIcon icon={faNetworkWired} size="3x"/>
+                    <h3>Network & System Security</h3>
+                    <p>I have foundational knowledge in network administration and system security, including configuring firewalls, setting up secure networks, and monitoring security events. As a fresh graduate, I am developing skills in network defense, intrusion detection, and maintaining secure infrastructure.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsSecond.map((label, index) => (
@@ -72,9 +73,9 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
-                    <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
+                    <FontAwesomeIcon icon={faCode} size="3x"/>
+                    <h3>Security Scripting & Tools</h3>
+                    <p>I am developing proficiency in security scripting using Python and Bash to automate security tasks, analyze vulnerabilities, and work with various security tools. As a fresh graduate, I am building hands-on experience with security automation and learning to leverage scripting for efficient security operations.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsThird.map((label, index) => (
