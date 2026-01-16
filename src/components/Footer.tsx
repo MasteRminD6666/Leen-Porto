@@ -8,7 +8,7 @@ function Footer() {
     <footer>
       <div>
         <a href="" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-        <a href="" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+        <a href="https://www.linkedin.com/in/leen-abdeen-0781453a4/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
       </div>
     </footer>
   );

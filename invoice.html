@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>فاتورة ضريبية</title>
+    <style>
+        body {
+            font-family: 'DejaVu Sans', 'Arial', sans-serif;
+            direction: rtl;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #F5F5F5;
+            padding: 20px;
+        }
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        .invoice-header {
+            border-bottom: 3px solid #2C3E50;
+            padding-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        .invoice-header h2 {
+            color: #2C3E50;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .info-row {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .info-row-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .info-row-table td {
+            vertical-align: top;
+            padding: 0;
+        }
+        .invoice-info {
+            width: 65%;
+            padding-right: 20px;
+        }
+        .info-row-table td.invoice-info {
+            width: 65%;
+        }
+        .info-row-table td.customer {
+            width: 35%;
+        }
+        .info-item {
+            padding: 8px 0;
+        }
+        .info-item strong {
+            color: #555;
+            display: inline-block;
+            min-width: 120px;
+        }
+        .info-item span {
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        .section-title {
+            color: #2C3E50;
+            font-size: 18px;
+            margin: 15px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E0E0E0;
+        }
+        .customer {
+            width: 35%;
+            margin-bottom: 0;
+        }
+        .customer h4 {
+            margin: 0 0 8px;
+            color: #2C3E50;
+            font-size: 16px;
+        }
+        .customer p {
+            margin: 0;
+            color: #555;
+            line-height: 1.8;
+        }
+        .table-container {
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse !important;
+            margin-top: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        table tbody tr {
+            background-color: #FFFFFF !important;
+        }
+        thead {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+            color: #FFFFFF;
+        }
+        th {
+            padding: 10px 12px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #1A252F;
+            letter-spacing: 0.5px;
+        }
+        tbody tr {
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .row-even {
+            background-color: #F8F9FA;
+        }
+        .row-odd {
+            background-color: #FFFFFF;
+        }
+        .table-container table td {
+            padding: 12px;
+            text-align: right;
+            color: #333;
+            border: 1px solid #E0E0E0;
+        }
+        .table-container table td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: #2C3E50;
+            width: 50px;
+        }
+        .table-container table td:nth-child(2) {
+            font-weight: 500;
+        }
+        .table-container table td:nth-child(3),
+        .table-container table td:nth-child(4),
+        .table-container table td:nth-child(5) {
+            text-align: left;
+            font-family: 'Courier New', monospace;
+        }
+        .totals {
+            margin-top: 15px;
+            padding: 20px;
+            background-color: #F8F9FA;
+            border-radius: 5px;
+            border: 2px solid #E0E0E0;
+        }
+        .totals p {
+            margin: 5px 0;
+            padding: 8px 0;
+            font-size: 15px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .totals-row {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .totals-row td {
+            padding: 8px 0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .totals-row td:first-child {
+            text-align: right;
+            width: 60%;
+        }
+        .totals-row td:last-child {
+            text-align: left;
+            width: 40%;
+        }
+        .totals p:last-child {
+            border-bottom: none;
+        }
+        .totals strong {
+            color: #2C3E50;
+            font-size: 16px;
+        }
+        .totals span {
+            color: #27AE60;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .totals-content {
+            width: 100%;
+        }
+        .totals-content-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .totals-content-table td {
+            vertical-align: top;
+            padding: 0;
+            border: none;
+        }
+        .totals-list {
+            width: 70%;
+            padding-right: 20px;
+        }
+        .qr-block {
+            width: 30%;
+            text-align: center;
+        }
+        .qr-container {
+            margin-top: 40px;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            border-radius: 10px;
+            border: 2px solid #DEE2E6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .qr-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .qr-code-wrapper {
+            display: inline-block;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 3px solid #2C3E50;
+        }
+        .qr-code-wrapper img {
+            display: block;
+            width: 180px;
+            height: 180px;
+            border-radius: 4px;
+        }
+        .qr-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #6C757D;
+            font-style: italic;
+        }
+        
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .invoice-container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <h2>{{$booking->event->title}}</h2>
+            <h2>فاتورة ضريبية</h2>
+        </div>
+
+        <div class="info-row">
+            <table class="info-row-table" style="width: 100%;">
+                <tr>
+                    <td class="invoice-info" style="width: 65%; padding-right: 20px; vertical-align: top;">
+                        <div class="info-item">
+                            <strong>الرقم الضريبي:</strong>
+                            <span>310156460300003</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>رقم الفاتورة:</strong>
+                            <span>{{ $booking->reference }}</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <strong>الوقت والتاريخ:</strong>
+                            <span>{{ $issueDate }}</span>
+                            <span>{{ str_replace('Z', '', $issueTime) }}</span>
+                        </div>
+                    </td>
+                    <td class="customer" style="width: 35%; vertical-align: top;">
+                        <h4>العميل:</h4>
+                        <p>{{ $booking->u_firstname }} {{ $booking->u_lastname}}<br>{{ $booking->address }}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h4 class="section-title">البيانات:</h4>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>م</th>
+                    <th>الوصف</th>
+                    <th>سعر الوحدة</th>
+                    <th>الكمية</th>
+                    <th>نسبة الضريبة</th>
+                    <th>قيمة الضريبة</th>
+                    <th>المجموع الفرعي بدون الضريبة</th>
+                    <th>المجموع شامل ضريبة القيمة المضافة</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($lines as $i => $line)
+                <tr class="{{ $i % 2 == 0 ? 'row-even' : 'row-odd' }}">
+                    <td>{{ $i + 1 }}</td>
+                    <td>{{ $line['description'] }}</td>
+                    <td>{{ $line['unitPrice'] }}</td>
+                    <td>{{ $line['quantity'] }}</td>
+                    <td>{{ $booking->event->vat }}</td>
+                    <td>{{  $taxInclusiveAmount - $taxExclusiveAmount }}</td>
+                    <td>{{ $taxExclusiveAmount }}</td>
+                    <td>{{ $line['total'] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="totals">
+        <div class="totals-content">
+            <table class="totals-content-table">
+                <tr>
+                    <td class="totals-list">
+                        <table class="totals-row" style="width: 100%;">
+                            <tr>
+                                <td><strong>الإجمالي قبل الضريبة:</strong></td>
+                                <td><span>{{ $taxInclusiveAmount  - ($taxInclusiveAmount - $taxExclusiveAmount )}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ضريبة القيمة المضافة:</strong></td>
+                                <td><span>{{ $taxInclusiveAmount - $taxExclusiveAmount }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>الإجمالي شامل الضريبة:</strong></td>
+                                <td><span>{{ $taxInclusiveAmount + $taxExclusiveAmount }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="qr-block">
+                        <div class="qr-code-wrapper">
+                            <img src="data:image/png;base64,{{ $qrImageBase64 }}" alt="QR Code" width="180" height="180" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
