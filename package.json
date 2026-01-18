@@ -10,6 +10,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/base": "^5.0.0-beta.70",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
     "@testing-library/jest-dom": "^5.17.0",
@@ -54,6 +55,11 @@
     ]
   },
   "devDependencies": {
-    "@types/react-vertical-timeline-component": "^3.3.6"
+    "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
+    "@types/react-vertical-timeline-component": "^3.3.6",
+    "gh-pages": "^6.3.0"
+  },
+  "overrides": {
+    "@mui/base": "^5.0.0-beta.70"
   }
 }
