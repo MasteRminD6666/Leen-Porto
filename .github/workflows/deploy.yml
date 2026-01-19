@@ -35,12 +35,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Copy root index.html to build folder
-        run: |
-          if [ -f index.html ]; then
-            cp index.html build/index.html
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
