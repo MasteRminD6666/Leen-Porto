@@ -13,14 +13,14 @@ function Main() {
         </div>
         <div className="content">
           <div className="social_icons">
-            <a href="" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+            <a href="#" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/leen-abdeen-0781453a4/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
           </div>
           <h1>Leen Abdeen</h1>
           <p>Cyber Security</p>
 
           <div className="mobile_social_icons">
-            <a href="" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+            <a href="#" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/leen-abdeen-0781453a4/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
           </div>
         </div>
